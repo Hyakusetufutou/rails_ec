@@ -8,21 +8,16 @@ RSpec.describe ProductsController, type: :controller do
   # end
 
   describe 'GET /show' do
-    before do
-      @product_test = Product.create!(
-        name: 'test',
-        price: 0,
-        description: 'test description'
-      )
-    end
+    let(:product_test) { Product.create!(**params) }
+    let(:params) { { name: 'test', price: 100, description: 'hoge' } }
 
     it 'returns a 200 response' do
-      get :show, params: { id: @product_test.id }
+      get :show, params: { id: product_test.id }
       expect(response).to have_http_status(:ok)
     end
 
     it 'responds' do
-      get :show, params: { id: @product_test.id }
+      get :show, params: { id: product_test.id }
       expect(response).to be_successful
     end
   end
