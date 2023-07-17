@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
   def index
     @products = Product.all
@@ -8,4 +10,3 @@ class ProductsController < ApplicationController
     @related_products = Product.limit(4).order('id DESC')
   end
 end
-
