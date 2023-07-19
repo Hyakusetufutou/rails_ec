@@ -13,56 +13,56 @@ attributes =
       name: 'iPhone14 Pro',
       price: 149_800,
       description: "iPhone14 Pro 128GB DeepPurple 6.1インチディスプレイ\n究極のiPhone",
-      image: 'iPhone14Pro_purple.jpg',
+      image: 'app/assets/images/iPhone14Pro_purple.jpg',
       filename: 'iPhone14Pro_purple.jpg'
     },
     {
       name: 'iPhone14',
       price: 119_800,
       description: "iPhone14 128GB Yellow 6.1インチディスプレイ\nすべてがパワフル。",
-      image: 'iPhone14_yellow.jpg',
+      image: 'app/assets/images/iPhone14_yellow.jpg',
       filename: 'iPhone14_yellow.jpg'
     },
     {
       name: 'iPhone13',
       price: 107_800,
       description: "iPhone13 128GB Blue 6.1インチディスプレイ\n驚きを詰め込みました",
-      image: 'iPhone13_blue.jpg',
+      image: 'app/assets/images/iPhone13_blue.jpg',
       filename: 'iPhone13_blue.jpg'
     },
     {
       name: 'iPhoneSE',
       price: 62_800,
       description: "iPhoneSE 64GB Product Red 4.7インチディスプレイ\nパワーをみんなの手に",
-      image: 'iPhoneSE_red.jpg',
+      image: 'app/assets/images/iPhoneSE_red.jpg',
       filename: 'iPhoneSE_red.jpg'
     },
     {
       name: 'iPad Pro',
       price: 124_800,
       description: "iPad Pro 128GB SpaceGray 11インチディスプレイ\n先端のテクノロジーで、究極のiPad体験を",
-      image: 'iPadPro_gray.jpg',
+      image: 'app/assets/images/iPadPro_gray.jpg',
       filename: 'iPadPro_gray.jpg'
     },
     {
       name: 'iPad Air',
       price: 92_800,
       description: "iPad Air 64GB Blue 10.9インチディスプレイ\n薄くて軽いデザイン。驚異的なパフォーマンス",
-      image: 'iPadAir_blue.jpg',
+      image: 'app/assets/images/iPadAir_blue.jpg',
       filename: 'iPadAir_blue.jpg'
     },
     {
       name: 'iPad 10th',
       price: 68_800,
       description: "iPad 10th 64GB Yellow 10.9インチディスプレイ\nすべてが新しい。すべてがカラフル。すべてが楽しい",
-      image: 'iPad10_yellow.jpg',
+      image: 'app/assets/images/iPad10_yellow.jpg',
       filename: 'iPad10_yellow.jpg'
     },
     {
       name: 'iPad mini',
       price: 78_800,
       description: "iPad mini 64GB Purple 8.3インチディスプレイ\niPad体験のすべてを、ミニサイズに",
-      image: 'iPadmini_purple.jpg',
+      image: 'app/assets/images/iPadmini_purple.jpg',
       filename: 'iPadmini_purple.jpg'
     }
   ]
