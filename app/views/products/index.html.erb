@@ -25,6 +25,8 @@
         <%= render partial: 'product_lists', locals: {products: @products} %>
       </div>
     </section>
+
+    <%= paginate @products %>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
       <%= render partial: 'footer' %>
