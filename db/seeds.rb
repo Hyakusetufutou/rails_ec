@@ -11,9 +11,10 @@
 (1..8).each do |n|
   product = Product.create!(
     name: "iPhone#{n}",
-    price: n*1000,
-    description: "hoge hoge"
+    price: n * 1000,
+    description: 'hoge hoge'
   )
 
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/iPad10_yellow.jpg')), filename: 'iPad10_yellow.jpg')
+  product.image.attach(io: File.open(Rails.root.join('app/assets/images/iPad10_yellow.jpg')),
+                       filename: 'iPad10_yellow.jpg')
 end
