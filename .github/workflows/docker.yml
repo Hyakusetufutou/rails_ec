@@ -4,6 +4,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+env:
+  RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 jobs:
   run-htmlbeautifier:
     name: Run htmlbeautifier
@@ -19,5 +21,3 @@ jobs:
         docker-compose run --rm web bin/setup
         docker-compose run --rm web bin/htmlbeautifier
         git diff --exit-code
-      env:
-        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
