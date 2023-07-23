@@ -19,3 +19,5 @@ jobs:
         docker-compose run --rm web bin/setup
         docker-compose run --rm web bin/htmlbeautifier
         git diff --exit-code
+      env:
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
