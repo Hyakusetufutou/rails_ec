@@ -27,7 +27,7 @@
               <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
               <button class="btn btn-outline-dark flex-shrink-0" type="button">
                 <i class="bi-cart-fill me-1"></i>
-                Add to cart
+                <%= t 'product_shows.Add_to_cart' %>
               </button>
             </div>
           </div>
@@ -37,7 +37,7 @@
     <!-- Related items section-->
     <section class="py-5 bg-light">
       <div class="container px-4 px-lg-5 mt-5">
-        <h2 class="fw-bolder mb-4">Related products</h2>
+        <h2 class="fw-bolder mb-4"><%= t 'product_shows.Related_products' %></h2>
         <%= render partial: 'product_lists', locals: {products: @related_products} %>
       </div>
     </section>
