@@ -1,0 +1,16 @@
+ja:
+  navigation:
+    Home: ホーム
+    About: 詳細
+    Shop: ショップ
+    Cart: カート
+    All_Products: 全商品
+    Popular_Items: 人気商品
+    New_Arrivals: 新着商品
+
+  product_lists:
+    View_Options: 詳細を見る
+
+  product_shows:
+    Add_to_cart: カートに入れる 
+    Related_products: 関連商品
