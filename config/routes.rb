@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   # root "tasks#index"
   resources :products, only: %i[index show]
+  namespace :admin do 
+    resources :products, except: %i[show]
+  end
   root 'products#index'
 end

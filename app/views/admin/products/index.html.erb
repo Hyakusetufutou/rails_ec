@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+  </head>
+  <body>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+      <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+          <h1 class="display-4 fw-bolder">管理者用画面</h1>
+        </div>
+      </div>
+    </header>
+    <!-- Section-->
+    <section class="py-5">
+
+      <div class="container px-4 px-lg-5 mt-5">
+      <% if flash[:notice] %>
+      <div class="alert alert-danger"><%= flash[:notice] %></div>
+      <% end %>
+      <div class="d-flex justify-content-end mb-3 me-3">
+      <%= link_to t('form.Create_new'), new_admin_product_path, class: 'btn btn-success flex' %>
+      </div>
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">商品名</th>
+              <th scope="col">価格</th>
+              <th scope="col" style="width:30%;">説明</th>
+              <th scope="col" style="width:20%;">画像</th>
+              <th scope="col">編集</th>
+              <th scope="col">削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @products%>
+              <% @products.each do |product| %>
+                <tr>
+                  <th scope="row"><%= product.id %></th>
+                  <td><%= product.name %></td>
+                  <td><%= "¥#{product.price}" %></td>
+                  <td><%= product.description %></td>
+                  <td><%= image_tag product.image, alt: '...', class: 'img-fluid' %></td>
+                  <td><%= link_to '編集', edit_admin_product_path(product.id), class: 'btn btn-primary' %></td>
+                  <td><%= link_to '削除', admin_product_path(product.id), data: {turbo_method: :delete, turbo_confirm: "削除します、よろしいでしょうか？" }, class: 'btn btn-danger' %><td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <%= paginate @products %>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+      <%= render 'products/footer' %>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
