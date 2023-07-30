@@ -12,13 +12,13 @@ class Product < ApplicationRecord
   private
 
   def image_type
-    if !image.blob.content_type.in?(%('image/jpeg image/jpg image/png'))
-      image.purge
-      errors.add(:image, 'はjpeg,jpgまたはpng形式でアップロードしてください')
-    end
+    return if image.blob.content_type.in?(%('image/jpeg image/jpg image/png'))
+
+    image.purge
+    errors.add(:image, 'はjpeg,jpgまたはpng形式でアップロードしてください')
   end
 
   def image_was_attached?
-    self.image.attached?
+    image.attached?
   end
 end
