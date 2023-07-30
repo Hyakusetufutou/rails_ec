@@ -2,6 +2,7 @@
 
 class Admin::ProductsController < ApplicationController
 
+  before_action :basic_auth
   before_action :set_product, only: %i[edit update destroy]
 
   def index
@@ -49,5 +50,11 @@ class Admin::ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :description, :image)
+  end
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |user_name, password|
+      user_name == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
   end
 end
