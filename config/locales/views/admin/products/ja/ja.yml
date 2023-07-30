@@ -1,0 +1,11 @@
+ja:
+  form:
+    Product_name: 商品名
+    Price: 価格
+    Description: 商品説明
+    Image: 画像
+    Update: 更新
+    Create: 作成
+    Create_new: 新規作成
+    Back: 戻る
+    

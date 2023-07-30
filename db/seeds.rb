@@ -9,12 +9,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 (1..8).each do |n|
-  product = Product.create!(
+  Product.create!(
     name: "iPhone#{n}",
     price: n * 1000,
-    description: 'hoge hoge'
+    description: 'hoge hoge',
+    image: ActiveStorage::Blob.create_and_upload!(
+      io: File.open(Rails.root.join('app/assets/images/iPhone14_yellow.jpg')), filename: 'iPhone14_yellow.jpg'
+    )
   )
-
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/iPad10_yellow.jpg')),
-                       filename: 'iPad10_yellow.jpg')
 end
