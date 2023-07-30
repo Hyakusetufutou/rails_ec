@@ -21,7 +21,7 @@
 
       <div class="container px-4 px-lg-5 mt-5">
       <% if flash[:notice] %>
-      <div class="alert alert-danger"><%= flash[:notice] %></div>
+      <div class="alert alert-info"><%= flash[:notice] %></div>
       <% end %>
       <div class="d-flex justify-content-end mb-3 me-3">
       <%= link_to t('form.Create_new'), new_admin_product_path, class: 'btn btn-success flex' %>

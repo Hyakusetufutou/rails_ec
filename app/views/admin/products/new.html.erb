@@ -7,7 +7,6 @@
     <meta name="author" content="" />
   </head>
   <body>
-    <%= render 'shared/error_messages' %>
     <div class='flex flex-wrap justify-center my-5'>
       <%= form_with model: @product, url: admin_products_path, local: true do |f| %> 
         <%= render partial: 'form', locals: { f: f } %>

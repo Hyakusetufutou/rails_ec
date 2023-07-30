@@ -9,7 +9,6 @@
   <body>
 
     <div class='flex flex-wrap justify-center my-5'>
-      <%= render 'shared/error_messages' %>
       <%= form_with model: @product, url: admin_product_path(@product.id), local: true do |f| %> 
         <%= render partial: 'form', locals: { f: f } %>
         <div class="d-flex justify-content-end mx-5">

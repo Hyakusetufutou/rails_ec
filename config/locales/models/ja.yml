@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        name: 商品名
+        price:  価格
+        description: 商品説明
+        image: 画像

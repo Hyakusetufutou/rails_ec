@@ -1,7 +1,7 @@
-<% if flash[:error_messages] %>
+<% if model.errors.any? %>
   <div class="alert alert-danger">
     <ul>
-      <% flash[:error_messages].each do |msg| %>
+      <% model.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>

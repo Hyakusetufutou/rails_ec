@@ -18,10 +18,7 @@ class Admin::ProductsController < ApplicationController
       flash[:notice] = "作成しました"
       redirect_to admin_products_path 
     else
-      redirect_to new_admin_product_path, flash: {
-        product: @product,
-        error_messages: @product.errors.full_messages
-      }
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,16 +27,18 @@ class Admin::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      flash[:notice] = "更新しました"
       redirect_to admin_products_path
     else 
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @product.delete
 
-    redirect_to admin_products_path notice: "削除しました"
+    flash[:notice] = "削除しました"
+    redirect_to admin_products_path 
   end
 
   private
