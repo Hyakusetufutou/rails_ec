@@ -18,14 +18,13 @@
     </header>
     <!-- Section-->
     <section class="py-5">
-
       <div class="container px-4 px-lg-5 mt-5">
-      <% if flash[:notice] %>
-      <div class="alert alert-info"><%= flash[:notice] %></div>
-      <% end %>
-      <div class="d-flex justify-content-end mb-3 me-3">
-      <%= link_to t('form.Create_new'), new_admin_product_path, class: 'btn btn-success flex' %>
-      </div>
+        <% if flash[:notice] %>
+          <div class="alert alert-info"><%= flash[:notice] %></div>
+        <% end %>
+        <div class="d-flex justify-content-end mb-3 me-3">
+          <%= link_to t('form.Create_new'), new_admin_product_path, class: 'btn btn-success flex' %>
+        </div>
         <table class="table">
           <thead class="table-dark">
             <tr>
@@ -48,22 +47,23 @@
                   <td><%= product.description %></td>
                   <td><%= image_tag product.image, alt: '...', class: 'img-fluid' %></td>
                   <td><%= link_to '編集', edit_admin_product_path(product.id), class: 'btn btn-primary' %></td>
-                  <td><%= link_to '削除', admin_product_path(product.id), data: {turbo_method: :delete, turbo_confirm: "削除します、よろしいでしょうか？" }, class: 'btn btn-danger' %><td>
-                </tr>
-              <% end %>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    <%= paginate @products %>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-      <%= render 'products/footer' %>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-  </body>
-</html>
+                  <td><%= link_to '削除', admin_product_path(product.id), data: {turbo_method: :delete, turbo_confirm: "削除します、よろしいでしょうか？" }, class: 'btn btn-danger' %>
+                    <td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <%= paginate @products %>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+          <%= render 'products/footer' %>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+      </body>
+    </html>

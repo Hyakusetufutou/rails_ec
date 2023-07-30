@@ -8,13 +8,13 @@
   </head>
   <body>
     <div class='flex flex-wrap justify-center my-5'>
-      <%= form_with model: @product, url: admin_products_path, local: true do |f| %> 
+      <%= form_with model: @product, url: admin_products_path, local: true do |f| %>
         <%= render partial: 'form', locals: { f: f } %>
         <div class="d-flex justify-content-end mx-5">
           <%= link_to t('form.Back'), admin_products_path, class: 'btn btn-primary mx-2' %>
           <%= f.submit t('form.Create'), class: 'btn btn-primary mx-2' %>
         </div>
-      <% end %> 
+      <% end %>
     </div>
   </body>
 </html>
