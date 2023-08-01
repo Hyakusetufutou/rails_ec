@@ -1,7 +1,7 @@
 
 # frozen_string_literal: true
 
-class CartsController < ApplicationController
+class CartItemsController < ApplicationController
   def index
   end
 
