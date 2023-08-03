@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products, except: %i[show]
   end
-  resources :cart_items, only: %i[index]
+  resources :cart_items, only: %i[index create destroy]
   root 'products#index'
 end

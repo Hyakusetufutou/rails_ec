@@ -21,6 +21,7 @@
     </header>
     <!-- Section-->
     <section class="py-5">
+      <%= render 'shared/flash_messages' %>
       <div class="container px-4 px-lg-5 mt-5">
         <%= render 'product_lists', products: @products %>
       </div>

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.page(params[:page])
+    @cart_item = CartItem.new
   end
 
   def show
@@ -15,11 +16,11 @@ class ProductsController < ApplicationController
   private
 
   def cart_session
-    if session[:cart]
-      @cart = session[:cart]
+    if session[:cart_id]
+      @cart_id = session[:cart]
     else 
       @cart = Cart.create
-      session[:cart] = @cart
+      session[:cart_id] = @cart.id
     end
   end
 end
