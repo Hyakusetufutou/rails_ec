@@ -141,17 +141,21 @@
           </span>
         </h4>
         <ul class="list-group mb-3">
-        <% @cart_items.each do |cart_item| %>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0"><%= "#{cart_item.product.name} ✖️ #{cart_item.quantity}" %></h6>
-              <small class="text-body-secondary"><%= cart_item.product.description %></small>
-              <%= link_to cart_item_path(cart_item.id), data: {turbo_method: :delete, turbo_confirm: "削除します。よろしいでしょうか？"} do %>
-                <button type="delete" class="btn btn-danger btn-sm"><%= t('show.Delete') %></button>
-              <% end %>
-            </div>
-            <span class="text-body-secondary"><%= "¥#{cart_item.product.price * cart_item.quantity}" %></span>
-          </li>
+        <% if @cart_items.present? %>
+          <% @cart_items.each do |cart_item| %>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0"><%= "#{cart_item.product.name} ✖️ #{cart_item.quantity}" %></h6>
+                <div><small class="text-body-secondary"><%= cart_item.product.description %></small></div>
+                <%= link_to cart_item_path(cart_item.id), data: {turbo_method: :delete, turbo_confirm: "#{cart_item.product.name}を削除します。よろしいでしょうか？"} do %>
+                  <button type="delete" class="btn btn-danger btn-sm"><%= t('show.Delete') %></button>
+                <% end %>
+              </div>
+              <span class="text-body-secondary"><%= "¥#{cart_item.product.price * cart_item.quantity}" %></span>
+            </li>
+          <% end %>
+        <% else %>
+          <%= 'アイテムはありません' %>
         <% end %>
         </ul>
 

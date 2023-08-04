@@ -3,8 +3,9 @@
     <% products.each do |product| %>
       <div class="col mb-5">
         <div class="card h-100">
+          <%= link_to product, style: 'color: inherit; text-decoration: none;' do %>
           <!-- Product image-->
-          <%= image_tag product.image, alt: "..." %>
+          <%= image_tag product.image, alt: "...", class: 'card-img-top' %>
           <!-- Product details-->
           <div class="card-body p-4">
             <div class="text-center">
@@ -16,9 +17,9 @@
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><%= link_to t('product_lists.View_Options'), product, class: 'btn btn-outline-dark mt-auto' %></div>
             <div class="text-center"><%= link_to t('product_shows.Add_to_cart'), cart_items_path(params: {product_id: product.id, quantity: 1}),data: {turbo_method: :post}, class: 'btn btn-outline-dark mt-auto' %></div>
           </div>
+          <% end %>
         </div>
       </div>
     <% end %>
