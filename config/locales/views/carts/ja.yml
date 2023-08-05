@@ -14,14 +14,9 @@ ja:
     Checkout_form: お支払い
     Your_cart: カート
     Delete: 削除
-    Shipping_address_is_the_same_as_my_billing_address: お届け先を請求先住所と同じにする
-    Save_this_information_for_next_time: この情報を保存する
-    Payment: 支払い方法
-    Credit_card: クレジットカード
-    Debit_card: デビットカード
     Name_on_card: カード名義
     Full_name_as_displayed_on_card: カードに記載の名前を記入ください
     Credit_card_number: グレジットカード番号
     Expiration: 有効期限
-    Continue_to_checkout: 決済を続ける
+    Continue_to_checkout: 購入する
     Redeem: 適用
