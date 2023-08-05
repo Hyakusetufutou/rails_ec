@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products, except: %i[show]
   end
-  resources :cart_items, only: %i[index create destroy]
+  resources :cart_items, only: %i[index create destroy] do
+    member do
+      patch 'increase'
+      patch 'decrease'
+    end
+  end
   root 'products#index'
 end

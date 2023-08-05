@@ -147,8 +147,23 @@
               <div>
                 <h6 class="my-0"><%= "#{cart_item.product.name} ✖️ #{cart_item.quantity}" %></h6>
                 <div><small class="text-body-secondary"><%= cart_item.product.description %></small></div>
+                <%= link_to decrease_cart_item_path(cart_item.id), data: {turbo_method: :patch}, style: 'text-decoration: none;' do %>
+                  <button type="button" class="btn">
+                    <i class="bi bi-dash-lg"></i>
+                  </button>
+                <% end %>
+
+                <span class="border" style="padding: 0.5rem;"><%= cart_item.quantity %></span>
+
+                <%= link_to increase_cart_item_path(cart_item.id), data: {turbo_method: :patch}, style: 'text-decoration: none;' do %>
+                  <button type="button" class="btn">
+                    <i class="bi bi-plus-lg"></i>
+                  </button>
+                <% end %>
                 <%= link_to cart_item_path(cart_item.id), data: {turbo_method: :delete, turbo_confirm: "#{cart_item.product.name}を削除します。よろしいでしょうか？"} do %>
-                  <button type="delete" class="btn btn-danger btn-sm"><%= t('show.Delete') %></button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-trash3"></i>
+                  </button>
                 <% end %>
               </div>
               <span class="text-body-secondary"><%= "¥#{cart_item.product.price * cart_item.quantity}" %></span>

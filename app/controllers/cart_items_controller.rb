@@ -9,7 +9,7 @@ class CartItemsController < ApplicationController
 
   def create
     current_cart.add_item(params[:product_id], params[:quantity] )
-    flash[:notice] = 'カートに追加しました'
+    flash[:notice] = 'カートへ追加しました'
     redirect_to request.referer 
   end
 
@@ -18,6 +18,22 @@ class CartItemsController < ApplicationController
     @item.destroy
     flash[:notice] = 'カートから削除しました'
     redirect_to request.referer
+  end
+
+  def increase
+    item = current_cart.cart_items.find(params[:id])
+    item.increment!(:quantity, 1)
+    redirect_to request.referer
+  end
+
+  def decrease
+    item = current_cart.cart_items.find(params[:id])
+    if item.quantity > 1
+      item.decrement!(:quantity, 1)
+    else 
+      item.destroy
+    end
+      redirect_to request.referer
   end
 
   private
