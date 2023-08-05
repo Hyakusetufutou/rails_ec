@@ -2,7 +2,7 @@
 
 class CartItemsController < ApplicationController
   before_action :current_cart_total_item, only: %i[index]
-  before_action :set_cart_item, only: %i[destroy increase decrease]
+  before_action :set_cart_item, only: %i[destroy update]
 
   def index
     @cart_items = CartItem.where(cart_id: session[:cart_id])
@@ -23,13 +23,10 @@ class CartItemsController < ApplicationController
     redirect_to request.referer
   end
 
-  def increase
-    @item.increase(1)
-    redirect_to request.referer
-  end
-
-  def decrease
-    @item.decrease(1)
+  def update
+    Rails.logger.debug params[:item_action]
+    @item.increase(1) if params[:item_action] == 'increase'
+    @item.decrease(1) if params[:item_action] == 'decrease'
     redirect_to request.referer
   end
 

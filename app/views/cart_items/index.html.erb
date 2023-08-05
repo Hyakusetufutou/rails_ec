@@ -133,13 +133,13 @@
                     <div>
                       <h6 class="my-0"><%= "#{cart_item.product.name} ✖️ #{cart_item.quantity}" %></h6>
                       <div><small class="text-body-secondary"><%= cart_item.product.description %></small></div>
-                      <%= link_to decrease_cart_item_path(cart_item.id), data: {turbo_method: :patch}, style: 'text-decoration: none;' do %>
+                      <%= link_to cart_item_path(cart_item.id, params: {item_action: 'decrease'}), data: {turbo_method: :patch}, style: 'text-decoration: none;' do %>
                         <button type="button" class="btn">
                           <i class="bi bi-dash-lg"></i>
                         </button>
                       <% end %>
                       <span class="border" style="padding: 0.5rem;"><%= cart_item.quantity %></span>
-                      <%= link_to increase_cart_item_path(cart_item.id), data: {turbo_method: :patch}, style: 'text-decoration: none;' do %>
+                      <%= link_to cart_item_path(cart_item.id, params: {item_action: 'increase'}), data: {turbo_method: :patch}, style: 'text-decoration: none;' do %>
                         <button type="button" class="btn">
                           <i class="bi bi-plus-lg"></i>
                         </button>
