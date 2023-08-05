@@ -113,7 +113,7 @@
     <div class="container">
       <main>
         <div class="py-5 text-center">
-          <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+          <%= image_tag 'bootstrap-logo.svg', class: 'd-block mx-auto mb-4', alt: '', width: '72', height: '57' %>
           <h2><%= t 'show.Checkout_form' %></h2>
           <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
         </div>
@@ -150,7 +150,7 @@
                         </button>
                       <% end %>
                     </div>
-                    <span class="text-body-secondary"><%= "¥#{cart_item.product.price * cart_item.quantity}" %></span>
+                    <span class="text-body-secondary"><%= "¥#{cart_item.total_price}" %></span>
                   </li>
                 <% end %>
               <% else %>

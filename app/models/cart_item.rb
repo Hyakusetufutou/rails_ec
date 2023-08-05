@@ -26,11 +26,17 @@ class CartItem < ApplicationRecord
     return false if quantity <= 0
 
     total = self.quantity - quantity
-    if total >= LOWER_LIMIT
-      self.quantity = total
+    if total < LOWER_LIMIT
+      self.quantity = LOWER_LIMIT
       save
-    else
-      destroy
+      return false
     end
+
+    self.quantity = total
+    save
+  end
+
+  def total_price
+    product.price * quantity
   end
 end
