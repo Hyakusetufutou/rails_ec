@@ -131,8 +131,8 @@
                 <% @cart_items.each do |cart_item| %>
                   <li class="list-group-item d-flex justify-content-between lh-sm">
                     <div>
-                      <h6 class="my-0"><%= "#{cart_item.product.name} ✖️ #{cart_item.quantity}" %></h6>
-                      <div><small class="text-body-secondary"><%= cart_item.product.description %></small></div>
+                      <h6 class="my-0"><%= "#{cart_item.product_name} ✖️ #{cart_item.quantity}" %></h6>
+                      <div><small class="text-body-secondary"><%= cart_item.product_description %></small></div>
                       <%= link_to cart_item_path(cart_item.id, params: {item_action: 'decrease'}), data: {turbo_method: :patch}, style: 'text-decoration: none;' do %>
                         <button type="button" class="btn">
                           <i class="bi bi-dash-lg"></i>
@@ -144,7 +144,7 @@
                           <i class="bi bi-plus-lg"></i>
                         </button>
                       <% end %>
-                      <%= link_to cart_item_path(cart_item.id), data: {turbo_method: :delete, turbo_confirm: "#{cart_item.product.name}を削除します。よろしいでしょうか？"} do %>
+                      <%= link_to cart_item_path(cart_item.id), data: {turbo_method: :delete, turbo_confirm: "#{cart_item.product_name}を削除します。よろしいでしょうか？"} do %>
                         <button type="button" class="btn btn-outline-secondary btn-sm">
                           <i class="bi bi-trash3"></i>
                         </button>
