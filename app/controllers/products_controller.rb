@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :cart_session, :cart_total_item_num
+  before_action :current_cart_total_item
 
   def index
     @products = Product.page(params[:page])
@@ -15,16 +15,4 @@ class ProductsController < ApplicationController
 
   private
 
-  def cart_session
-    if session[:cart_id]
-      @cart_id = session[:cart]
-    else 
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
-    end
-  end
-
-  def cart_total_item_num
-    @total_item = Cart.find(session[:cart_id]).total_item
-  end
 end

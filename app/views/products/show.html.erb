@@ -26,7 +26,7 @@
             <p class="lead"><%= simple_format(@product.description) %></p>
               <%= form_with url: cart_items_path(params: {product_id: @product.id}), method: :post do |f| %>
                 <div class="d-flex">
-                  <%= f.number_field :quantity, min: 1, step: 1, value: 1, class: 'form-control text-left me-3', style: 'max-width: 4rem' %>
+                  <%= f.number_field :quantity, min: 1, max: 20, step: 1, value: 1, class: 'form-control text-left me-3', style: 'max-width: 4rem' %>
                   <%= f.button class: 'btn btn-outline-dark flex-shrink-0' do %>
                     <i class="bi-cart-fill me-1"></i>
                     <%= t 'product_shows.Add_to_cart' %>

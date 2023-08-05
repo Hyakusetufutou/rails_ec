@@ -2,44 +2,42 @@
 # frozen_string_literal: true
 
 class CartItemsController < ApplicationController
+  before_action :current_cart_total_item, only: %i[index]
+  before_action :set_cart_item, only: %i[destroy increase decrease]
+
   def index
     @cart_items = CartItem.where(cart_id: session[:cart_id])
-    @total_item = current_cart.total_item
   end
 
   def create
-    current_cart.add_item(params[:product_id], params[:quantity] )
-    flash[:notice] = 'カートへ追加しました'
+    if current_cart.add_item(params[:product_id], params[:quantity].to_i )
+      flash[:notice] = 'カートへ追加しました'
+    else 
+      flash[:alert] = '問題が発生しました'
+    end
     redirect_to request.referer 
   end
 
   def destroy
-    @item = current_cart.cart_items.find(params[:id])
     @item.destroy
     flash[:notice] = 'カートから削除しました'
     redirect_to request.referer
   end
 
   def increase
-    item = current_cart.cart_items.find(params[:id])
-    item.increment!(:quantity, 1)
+    @item.increase(1)
     redirect_to request.referer
   end
 
   def decrease
-    item = current_cart.cart_items.find(params[:id])
-    if item.quantity > 1
-      item.decrement!(:quantity, 1)
-    else 
-      item.destroy
-    end
-      redirect_to request.referer
+    @item.decrease(1)
+    redirect_to request.referer
   end
 
   private
 
-  def current_cart
-    Cart.find(session[:cart_id])
+  def set_cart_item
+    @item = current_cart.cart_items.find(params[:id])
   end
 
 

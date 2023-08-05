@@ -1,10 +1,12 @@
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
 
+  LOWER_LIMIT = 1
+  UPPER_LIMIT = 20
+
   def add_item(product_id, quantity)
     item = cart_items.find_by(product_id: product_id) || cart_items.build(product_id: product_id)
-    item.quantity += quantity.to_i
-    item.save
+    item.increase(quantity)
   end
 
   def total_item
@@ -14,4 +16,5 @@ class Cart < ApplicationRecord
     end
     item_num
   end
+
 end
