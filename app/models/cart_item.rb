@@ -40,11 +40,7 @@ class CartItem < ApplicationRecord
     product.price * quantity
   end
 
-  def product_name
-    product.name
-  end
+  delegate :name, to: :product, prefix: true
 
-  def product_description
-    product.description
-  end
+  delegate :description, to: :product, prefix: true
 end
