@@ -13,7 +13,7 @@
     <!-- Product section-->
     <section class="py-5">
       <div class="container px-4 px-lg-5 my-5">
-      <%= render 'shared/flash_messages' %>
+        <%= render 'shared/flash_messages' %>
         <div class="row gx-4 gx-lg-5 align-items-center">
           <div class="col-md-6"><%= image_tag @product.image, alt: '...', class: 'card-img-top mb-5 mb-md-0' %></div>
           <div class="col-md-6">
@@ -24,15 +24,15 @@
               <span><%= "¥#{@product.price}" %></span>
             </div>
             <p class="lead"><%= simple_format(@product.description) %></p>
-              <%= form_with url: cart_items_path(params: {product_id: @product.id}), method: :post do |f| %>
-                <div class="d-flex">
-                  <%= f.number_field :quantity, min: 1, max: 20, step: 1, value: 1, class: 'form-control text-left me-3', style: 'max-width: 4rem' %>
-                  <%= f.button class: 'btn btn-outline-dark flex-shrink-0' do %>
-                    <i class="bi-cart-fill me-1"></i>
-                    <%= t 'product_shows.Add_to_cart' %>
-                  <% end %>
-                </div>
-              <% end %>
+            <%= form_with url: cart_items_path(params: {product_id: @product.id}), method: :post do |f| %>
+              <div class="d-flex">
+                <%= f.number_field :quantity, min: 1, max: 20, step: 1, value: 1, class: 'form-control text-left me-3', style: 'max-width: 4rem' %>
+                <%= f.button class: 'btn btn-outline-dark flex-shrink-0' do %>
+                  <i class="bi-cart-fill me-1"></i>
+                  <%= t 'product_shows.Add_to_cart' %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

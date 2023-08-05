@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
 
@@ -11,10 +13,7 @@ class Cart < ApplicationRecord
 
   def total_item
     item_num = 0
-    if cart_items.present?
-      cart_items.each { |item| item_num += item.quantity }
-    end
+    cart_items.each { |item| item_num += item.quantity } if cart_items.present?
     item_num
   end
-
 end

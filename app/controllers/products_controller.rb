@@ -12,7 +12,4 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @related_products = Product.order('id DESC').page(1).per(4)
   end
-
-  private
-
 end

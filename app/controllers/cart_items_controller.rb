@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 class CartItemsController < ApplicationController
@@ -10,12 +9,12 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    if current_cart.add_item(params[:product_id], params[:quantity].to_i )
+    if current_cart.add_item(params[:product_id], params[:quantity].to_i)
       flash[:notice] = 'カートへ追加しました'
-    else 
+    else
       flash[:alert] = '問題が発生しました'
     end
-    redirect_to request.referer 
+    redirect_to request.referer
   end
 
   def destroy
@@ -39,6 +38,4 @@ class CartItemsController < ApplicationController
   def set_cart_item
     @item = current_cart.cart_items.find(params[:id])
   end
-
-
 end

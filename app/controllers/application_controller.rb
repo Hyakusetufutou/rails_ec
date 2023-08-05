@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   private
 
   def cart_session
-    if !Cart.find_by(id: session[:cart_id])
-      cart = Cart.create
-      session[:cart_id] = cart.id
-    end
+    return if Cart.find_by(id: session[:cart_id])
+
+    cart = Cart.create
+    session[:cart_id] = cart.id
   end
 
   def current_cart
