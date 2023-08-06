@@ -165,119 +165,84 @@
           </div>
           <div class="col-md-7 col-lg-8">
             <h4 class="mb-3"><%= t 'index.Billing_address' %></h4>
-            <form class="needs-validation" novalidate>
+            <%= form_with class: 'needs-validation' do |f| %>
               <div class="row g-3">
                 <div class="col-sm-6">
-                  <label for="firstName" class="form-label"><%= t 'index.First_name' %></label>
-                  <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                  <%= f.label :firstName, t('index.First_name'), class: 'form-label' %>
+                  <%= f.text_field :firstName, placeholder: '', value: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Valid first name is required.
                   </div>
                 </div>
                 <div class="col-sm-6">
-                  <label for="lastName" class="form-label"><%= t 'index.Last_name' %></label>
-                  <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                  <%= f.label :lastName, t('index.Last_name'), class: 'form-label' %>
+                  <%= f.text_field :lastName, placeholder: '', value: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Valid last name is required.
                   </div>
                 </div>
                 <div class="col-12">
-                  <label for="username" class="form-label"><%= t 'index.User_name' %></label>
+                  <%= f.label :username, t('index.User_name'), class: 'form-label' %>
                   <div class="input-group has-validation">
                     <span class="input-group-text">@</span>
-                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+                    <%= f.text_field :username, placeholder: 'Username', required: true, class: 'form-control' %>
                     <div class="invalid-feedback">
                       Your username is required.
                     </div>
                   </div>
                 </div>
                 <div class="col-12">
-                  <label for="email" class="form-label"><%= t 'index.Email' %></label>
-                  <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                  <%= f.label :email, t('index.Email'), class: 'form-label' %>
+                  <%= f.email_field :email, placeholder: 'you@example.com', class: 'form-control' %>
                   <div class="invalid-feedback">
                     Please enter a valid email address for shipping updates.
                   </div>
                 </div>
                 <div class="col-12">
-                  <label for="address" class="form-label"><%= t 'index.Address' %></label>
-                  <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                  <%= f.label :address, t('index.Address'), class: 'form-label' %>
+                  <%= f.text_field :address, placeholder: '1234 Main St', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Please enter your shipping address.
                   </div>
                 </div>
                 <div class="col-12">
-                  <label for="address2" class="form-label"><%= t 'index.Address2' %></label>
-                  <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                  <%= f.label :address2, t('index.Address2'), class: 'form-label' %>
+                  <%= f.text_field :address2, placeholder: 'Apartment or suite', class: 'form-control' %>
                 </div>
                 <div class="col-md-5">
-                  <label for="country" class="form-label"><%= t 'index.Country' %></label>
-                  <select class="form-select" id="country" required>
-                    <option value=""><%= t 'index.Choose' %></option>
-                    <option>日本</option>
-                  </select>
+                  <%= f.label :country, t('index.Country'), class: 'form-label' %>
+                  <%= f.select :country, [['日本', 'japan']], { prompt: '選択'}, {required: true, class: 'form-select'} %>
                   <div class="invalid-feedback">
                     Please select a valid country.
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <label for="state" class="form-label"><%= t 'index.State' %></label>
-                  <select class="form-select" id="state" required>
-                    <option value=""><%= t 'index.Choose' %></option>
-                    <option>北海道</option>
-                    <option>青森県</option>
-                    <option>秋田県</option>
-                    <option>岩手県</option>
-                    <option>山形県</option>
-                    <option>宮城県</option>
-                    <option>福島県</option>
-                    <option>茨城県</option>
-                    <option>栃木県</option>
-                    <option>群馬県</option>
-                    <option>埼玉県</option>
-                    <option>千葉県</option>
-                    <option>東京都</option>
-                    <option>神奈川県</option>
-                    <option>山梨県</option>
-                    <option>新潟県</option>
-                    <option>長野県</option>
-                    <option>富山県</option>
-                    <option>石川県</option>
-                    <option>福井県</option>
-                    <option>静岡県</option>
-                    <option>愛知県</option>
-                    <option>岐阜県</option>
-                    <option>三重県</option>
-                    <option>滋賀県</option>
-                    <option>京都府</option>
-                    <option>大阪府</option>
-                    <option>奈良県</option>
-                    <option>和歌山県</option>
-                    <option>兵庫県</option>
-                    <option>岡山県</option>
-                    <option>広島県</option>
-                    <option>山口県</option>
-                    <option>鳥取県</option>
-                    <option>島根県</option>
-                    <option>香川県</option>
-                    <option>徳島県</option>
-                    <option>高知県</option>
-                    <option>愛媛県</option>
-                    <option>福岡県</option>
-                    <option>大分県</option>
-                    <option>宮崎県</option>
-                    <option>佐賀県</option>
-                    <option>長崎県</option>
-                    <option>熊本県</option>
-                    <option>鹿児島県</option>
-                    <option>沖縄県</option>
-                  </select>
+                  <%= f.label :state, t('index.State'), class: 'form-label' %>
+                  <%= f.select :state, 
+                   [ ['北海道', 'hokkaido'], ['青森県', 'aomori'],
+                  ['秋田県', 'akita'], ['岩手県', 'iwate'], ['山形県', 'yamagata'], 
+                  ['宮城県', 'miyagi'], ['福島県', 'fukusima'], ['茨城県', 'ibaraki'], 
+                  ['栃木県', 'tochigi'], ['群馬県', 'gunma'], ['埼玉県', 'saitama'], 
+                  ['千葉県', 'chiba'], ['東京都', 'tokyo'], ['神奈川県', 'kanagawa'], 
+                  ['山梨県', 'yamanasi'], ['新潟県', 'nigata'], ['長野県', 'nagano'], 
+                  ['富山県', 'toyama'], ['石川県', 'isikawa'], ['福井県', 'fukui'], 
+                  ['静岡県', 'sizuoka'], ['愛知県', 'aiti'], ['岐阜県', 'gifu'], 
+                  ['三重県', 'mie'], ['滋賀県', 'siga'], ['京都府', 'kyoto'], 
+                  ['大阪府', 'osaka'], ['奈良県', 'nara'], ['和歌山県', 'wakayama'], 
+                  ['兵庫県', 'hyougo'], ['岡山県', 'okayama'], ['広島県', 'hirosima'], 
+                  ['山口県', 'yamaguchi'], ['鳥取県', 'tottori'], ['島根県', 'simane'], 
+                  ['香川県', 'kagawa'], ['徳島県', 'tokusima'], ['高知県', 'kouchi'], 
+                  ['愛媛県', 'ehime'], ['福岡県', 'fukuoka'], ['大分県', 'ooita'], 
+                  ['宮崎県', 'miyazaki'], ['佐賀県', 'saga'], ['長崎県', 'nagasaki'], 
+                  ['熊本県', 'kumamoto'], ['鹿児島県', 'kagosima'], ['沖縄県', 'okinawa'] ],
+                  {prompt: '選択' }, {required: true, class: 'form-select' } %>
                   <div class="invalid-feedback">
                     Please provide a valid state.
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <label for="zip" class="form-label"><%= t 'index.Zip' %></label>
-                  <input type="text" class="form-control" id="zip" placeholder="" required>
+                  <%= f.label :zip, t('index.Zip'), class: 'form-label' %>
+                  <%= f.text_field :zip, placeholder: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Zip code required.
                   </div>
@@ -286,38 +251,38 @@
               <hr class="my-4">
               <div class="row gy-3">
                 <div class="col-md-6">
-                  <label for="cc-name" class="form-label"><%= t 'index.Name_on_card' %></label>
-                  <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                  <%= f.label :cc_name, t('index.Name_on_card'), class: 'form-label' %>
+                  <%= f.text_field :cc_name, placeholder: '', required: true, class: 'form-control' %>
                   <small class="text-body-secondary"><%= t 'index.Full_name_as_displayed_on_card' %></small>
                   <div class="invalid-feedback">
                     Name on card is required
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="cc-number" class="form-label"><%= t 'index.Credit_card_number' %></label>
-                  <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                  <%= f.label :cc_number, t('index.Credit_card_number'), class: 'form-label' %>
+                  <%= f.text_field :cc_number, placeholder: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Credit card number is required
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <label for="cc-expiration" class="form-label"><%= t 'index.Expiration' %></label>
-                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                  <%= f.label :cc_expiration, t('index.Expiration'), class: 'form-label' %>
+                  <%= f.text_field :cc_expiration, placeholder: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Expiration date required
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <label for="cc-cvv" class="form-label">CVV</label>
-                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                  <%= f.label :cc_cvv, 'CVV', class: 'form-label' %>
+                  <%= f.text_field :cc_expiration, placeholder: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Security code required
                   </div>
                 </div>
               </div>
               <hr class="my-4">
-              <button class="w-100 btn btn-primary btn-lg" type="submit"><%= t 'index.Continue_to_checkout' %></button>
-            </form>
+              <%= f.button t('index.Continue_to_checkout'), class: 'w-100 btn btn-primary btn-lg' %>
+            <% end %>
           </div>
         </div>
       </main>
