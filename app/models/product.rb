@@ -9,6 +9,8 @@ class Product < ApplicationRecord
   validates :image, presence: true
   validate :image_type, if: :image_was_attached?
 
+  has_many :cart_items, dependent: :destroy
+
   private
 
   def image_type
