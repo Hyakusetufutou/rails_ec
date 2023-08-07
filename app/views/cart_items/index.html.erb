@@ -168,15 +168,15 @@
             <%= form_with class: 'needs-validation' do |f| %>
               <div class="row g-3">
                 <div class="col-sm-6">
-                  <%= f.label :firstName, t('index.First_name'), class: 'form-label' %>
-                  <%= f.text_field :firstName, placeholder: '', value: '', required: true, class: 'form-control' %>
+                  <%= f.label :firstname, t('index.First_name'), class: 'form-label' %>
+                  <%= f.text_field :firstname, placeholder: '', value: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Valid first name is required.
                   </div>
                 </div>
                 <div class="col-sm-6">
-                  <%= f.label :lastName, t('index.Last_name'), class: 'form-label' %>
-                  <%= f.text_field :lastName, placeholder: '', value: '', required: true, class: 'form-control' %>
+                  <%= f.label :lastname, t('index.Last_name'), class: 'form-label' %>
+                  <%= f.text_field :lastname, placeholder: '', value: '', required: true, class: 'form-control' %>
                   <div class="invalid-feedback">
                     Valid last name is required.
                   </div>
