@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
     else
       render cart_items_path, status: :unprocessable_entity
     end
-
   end
 
   private
