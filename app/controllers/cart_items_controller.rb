@@ -24,7 +24,6 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    Rails.logger.debug params[:item_action]
     @item.increase(1) if params[:item_action] == 'increase'
     @item.decrease(1) if params[:item_action] == 'decrease'
     redirect_to request.referer

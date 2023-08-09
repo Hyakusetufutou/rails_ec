@@ -16,4 +16,10 @@ class Cart < ApplicationRecord
     cart_items.each { |item| item_num += item.quantity } if cart_items.present?
     item_num
   end
+
+  def total_price
+    price = 0
+    cart_items.each { |item| price += item.total_price } if cart_items.present?
+    price
+  end
 end
