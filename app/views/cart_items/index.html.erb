@@ -284,7 +284,7 @@
               <% if @cart_items.present? %>
                 <%= f.button t('index.Continue_to_checkout'), class: 'w-100 btn btn-primary btn-lg' %>
               <% else %>
-                <%= f.button t('index.Continue_to_checkout'), class: 'w-100 btn btn-primary btn-lg', data: {disable_with: true, confrim: 'a'} %>
+                <%= f.button t('index.Continue_to_checkout'), class: 'w-100 btn btn-primary btn-lg', disabled: true %>
               <% end %>
             <% end %>
           </div>

@@ -46,18 +46,17 @@
                   <td><%= image_tag product.image, alt: '...', class: 'img-fluid' %></td>
                   <td><%= link_to '編集', edit_admin_product_path(product.id), class: 'btn btn-primary' %></td>
                   <td><%= link_to '削除', admin_product_path(product.id), data: {turbo_method: :delete, turbo_confirm: "削除します、よろしいでしょうか？" }, class: 'btn btn-danger' %>
-                    <td>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
           </div>
         </section>
         <%= paginate @products %>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-          <%= render 'products/footer' %>
+          <%= render 'shared/footer' %>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

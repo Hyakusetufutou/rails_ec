@@ -5,7 +5,8 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item, only: %i[destroy update]
 
   def index
-    @cart_items = CartItem.where(cart_id: session[:cart_id])
+    @cart_items = CartItem.where(cart_id: session[:cart_id]).order(:id)
+    @order = Order.new
   end
 
   def create

@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
       return
     end
 
-    if !order.save && !order.register_order_details(current_cart.cart_items)
+    if !order.save || !order.register_order_details(current_cart.cart_items)
       redirect_to request.referer
       return
     end
@@ -24,6 +24,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    pp params.require(:order).permit(:firstname, :lastname, :username, :email, :address, :address2, :country, :state, :zip, :cc_name, :cc_number, :cc_cvv, :cc_expiration)
+    params.require(:order).permit(:firstname, :lastname, :username, :email, :address, :address2, :country, :state, :zip, :cc_name, :cc_number, :cc_cvv, :cc_expiration)
   end
 end
