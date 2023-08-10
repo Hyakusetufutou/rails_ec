@@ -35,9 +35,9 @@
             <% if @order_details%>
               <% @order_details.each do |order_detail| %>
                 <tr>
-                  <th scope="row"><%= order_detail.order.id %></th>
-                  <td><%= order_detail.order.firstname %></td>
-                  <td><%= order_detail.product.name %></td>
+                  <th scope="row"><%= order_detail.order_id %></th>
+                  <td><%= order_detail.order_firstname %></td>
+                  <td><%= order_detail.product_name %></td>
                   <td><%= order_detail.quantity %></td>
                   <td><%= "¥#{order_detail.price}" %></td>
                   <td><%= link_to '詳細', order_detail_path(order_detail.id), class: 'btn btn-primary' %></td>
@@ -48,14 +48,14 @@
         </table>
       </div>
     </section>
-        <%= paginate @order_details %>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-          <%= render 'shared/footer' %>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-      </body>
-    </html>
+    <%= paginate @order_details %>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+      <%= render 'shared/footer' %>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
