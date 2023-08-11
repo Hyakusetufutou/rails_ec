@@ -18,4 +18,8 @@ class Order < ApplicationRecord
       return false unless order_detail.save
     end
   end
+
+  def fullname
+    firstname + lastname
+  end
 end

@@ -15,6 +15,8 @@ class OrdersController < ApplicationController
       return
     end
 
+    OrderMailer.complete(order.id).deliver_later
+
     current_cart.destroy
 
     flash[:notice] = '購入ありがとうございます'
