@@ -4,38 +4,38 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p><%= "#{@order.fullname}様" %><p>
-    <p>この度はご注文していただき、誠にありがとうございます。</p>
-    <p>お客様からのご注文を、以下のとおり承りました。</p>
-    <p>
-      ご注文のお品は、ただいまより確認いたしますので、<br>
-      少々お待ちいただきますよう、よろしくお願い申し上げます。
-    </p>
-    <p>
-      ============================= <br>
-      ご注文内容 <br>
-      =============================
-    </p>
-    <p>
-      <%= "ご注文日：#{l(@order.created_at, format: :only_date)}" %><br>
-      <%= "ご注文者：#{@order.fullname}様" %>
-    </p>
-    <% @order_details.each do |order_detail| %>
+    <p><%= "#{@order.fullname}様" %>
       <p>
-        <%= "商品名：#{order_detail.product_name}" %><br>
-        <%= "価格　：#{order_detail.product_price}円" %><br>
-        <%= "個数　：#{order_detail.quantity}個" %><br>
-        <%= "小計　：#{order_detail.price}円" %>
-      </p>
-    <% end %>
-    <p><%= "合計金額：#{@order.billing_amount}円" %></p>
-    <p>
-      ============================= <br>
-      お届け先ご住所 <br>
-      ============================= <br>
-      <%= "〒#{@order.zip.insert(3,'-')}" %><br>
-      <%= "#{@order.state + @order.address + @order.address2}" %>
-    </p>
-
-  </body>
-</html>
+        <p>この度はご注文していただき、誠にありがとうございます。</p>
+        <p>お客様からのご注文を、以下のとおり承りました。</p>
+        <p>
+          ご注文のお品は、ただいまより確認いたしますので、<br>
+          少々お待ちいただきますよう、よろしくお願い申し上げます。
+        </p>
+        <p>
+          ============================= <br>
+          ご注文内容 <br>
+          =============================
+        </p>
+        <p>
+          <%= "ご注文日：#{l(@order.created_at, format: :only_date)}" %><br>
+          <%= "ご注文者：#{@order.fullname}様" %>
+        </p>
+        <% @order_details.each do |order_detail| %>
+          <p>
+            <%= "商品名：#{order_detail.product_name}" %><br>
+            <%= "価格　：#{order_detail.product_price}円" %><br>
+            <%= "個数　：#{order_detail.quantity}個" %><br>
+            <%= "小計　：#{order_detail.price}円" %>
+          </p>
+        <% end %>
+        <p><%= "合計金額：#{@order.billing_amount}円" %></p>
+        <p>
+          ============================= <br>
+          お届け先ご住所 <br>
+          ============================= <br>
+          <%= "〒#{@order.zip.insert(3,'-')}" %><br>
+          <%= "#{@order.state + @order.address + @order.address2}" %>
+        </p>
+      </body>
+    </html>

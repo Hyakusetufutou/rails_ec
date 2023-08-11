@@ -9,48 +9,48 @@
   <body>
     <div class='flex flex-wrap justify-center my-5'>
       <div class="container px-4 px-lg-5 mt-5">
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col" style="width: 20%;">項目</th>
-            <th scope="col">情報</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>注文日</td>
-            <td><%= l @order_detail.order_created_at, format: :only_date %></td>
-          </tr>
-          <tr>
-            <td>注文者</td>
-            <td><%= @order_detail.order_firstname %></td>
-          </tr>
-          <tr>
-            <td>商品名</td>
-            <td><%= @order_detail.product_name %></td>
-          </tr>
-          <tr>
-            <td>価格</td>
-            <td><%= "¥#{@order_detail.product_price}" %></td>
-          </tr>
-          <tr>
-            <td>数量</td>
-            <td><%= @order_detail.quantity %></td>
-          </tr>
-          <tr>
-            <td>小計</td>
-            <td><%= "¥#{@order_detail.price}" %></td>
-          </tr>
-          <tr>
-            <td>商品説明</td>
-            <td><%= @order_detail.product_description %></td>
-          </tr>
-          <tr>
-            <td>商品画像</td>
-            <td><%= image_tag @order_detail.product_image, style: 'width: 30%;' %></td>
-          </tr>
-        </tbody>
-      </table>
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" style="width: 20%;">項目</th>
+              <th scope="col">情報</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>注文日</td>
+              <td><%= l @order_detail.order_created_at, format: :only_date %></td>
+            </tr>
+            <tr>
+              <td>注文者</td>
+              <td><%= @order_detail.order_firstname %></td>
+            </tr>
+            <tr>
+              <td>商品名</td>
+              <td><%= @order_detail.product_name %></td>
+            </tr>
+            <tr>
+              <td>価格</td>
+              <td><%= "¥#{@order_detail.product_price}" %></td>
+            </tr>
+            <tr>
+              <td>数量</td>
+              <td><%= @order_detail.quantity %></td>
+            </tr>
+            <tr>
+              <td>小計</td>
+              <td><%= "¥#{@order_detail.price}" %></td>
+            </tr>
+            <tr>
+              <td>商品説明</td>
+              <td><%= @order_detail.product_description %></td>
+            </tr>
+            <tr>
+              <td>商品画像</td>
+              <td><%= image_tag @order_detail.product_image, style: 'width: 30%;' %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </body>

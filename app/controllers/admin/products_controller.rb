@@ -26,12 +26,10 @@ module Admin
     def edit; end
 
     def update
-
-
       product = Product.new(product_params)
 
-      pp @product.image.download
-      product.image.attach(@product.image.blob) if !product.image.attached?
+      Rails.logger.debug @product.image.download
+      product.image.attach(@product.image.blob) unless product.image.attached?
 
       if product.save
         @product.deleted!
