@@ -11,6 +11,8 @@ class Product < ApplicationRecord
   validates :image, presence: true
   validate :image_type, if: :image_was_attached?
 
+  enum :status, { active: 0, deleted: 1}
+
   private
 
   def image_type
