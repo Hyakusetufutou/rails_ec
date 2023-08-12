@@ -8,8 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.billing_amount = current_cart.total_price
+    @order = order_new
 
     if current_cart.cart_items.empty? | !@order.save || !@order.register_order_details(current_cart.cart_items)
       render :index, status: :unprocessable_entity
@@ -21,7 +20,7 @@ class OrdersController < ApplicationController
     current_cart.destroy
 
     flash[:notice] = '購入ありがとうございます'
-    redirect_to products_path 
+    redirect_to products_path
   end
 
   private
@@ -29,6 +28,12 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:firstname, :lastname, :username, :email, :address, :address2, :country, :state,
                                   :zip, :cc_name, :cc_number, :cc_cvv, :cc_expiration)
+  end
+
+  def order_new
+    order = Order.new(order_params)
+    order.billing_amount = current_cart.total_price
+    order
   end
 
   def current_cart_items
