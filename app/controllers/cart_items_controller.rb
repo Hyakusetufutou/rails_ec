@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
 class CartItemsController < ApplicationController
-  before_action :current_cart_total_item, only: %i[index]
   before_action :set_cart_item, only: %i[destroy update]
-
-  def index
-    @cart_items = CartItem.where(cart_id: session[:cart_id]).order(:id)
-    @order = Order.new
-  end
 
   def create
     if current_cart.add_item(params[:product_id], params[:quantity].to_i)
