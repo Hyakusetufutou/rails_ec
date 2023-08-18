@@ -13,4 +13,5 @@ class OrderDetail < ApplicationRecord
   delegate :price, to: :product, prefix: true
   delegate :image, to: :product, prefix: true
   delegate :description, to: :product, prefix: true
+  delegate :fullname, to: :order, prefix: true
 end
