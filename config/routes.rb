@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :products, except: %i[show]
   end
   resources :cart_items, only: %i[create update destroy]
-  resources :orders, only: %i[index create]
+  resources :orders, only: %i[index new create]
   resources :order_details, only: %i[index show]
   root 'products#index'
 end
