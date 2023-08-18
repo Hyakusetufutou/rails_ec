@@ -4,7 +4,6 @@ class OrderDetailsController < ApplicationController
   before_action :basic_auth
 
   def index
-    pp params[:id]
     @order_details = OrderDetail.where(order_id: params[:id]).page(params[:page]).order(:id)
   end
 
