@@ -2,6 +2,7 @@
 
 class OrdersController < ApplicationController
   before_action :current_cart_total_item, :current_cart_items, only: %i[new create]
+  before_action :basic_auth, only: %i[index]
 
   def index
     @orders = Order.page(params[:page]).order(:id)
