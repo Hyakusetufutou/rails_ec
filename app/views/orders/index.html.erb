@@ -19,7 +19,6 @@
     <!-- Section-->
     <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
-        <%= render 'shared/flash_messages' %>
         <table class="table">
           <thead class="table-dark">
             <tr>
@@ -38,7 +37,7 @@
                   <td><%= order.fullname %></td>
                   <td><%= l order.created_at, format: :only_date %></td>
                   <td><%= "¥#{order.billing_amount}" %></td>
-                  <td><%= link_to '詳細', order_detail_path(order.id), class: 'btn btn-primary' %></td>
+                  <td><%= link_to '詳細', order_details_path(id: order.id), class: 'btn btn-primary' %></td>
                 </tr>
               <% end %>
             <% end %>

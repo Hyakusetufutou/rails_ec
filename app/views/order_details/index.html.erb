@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+  </head>
+  <body>
+    <div class='flex flex-wrap justify-center my-5'>
+      <div class="container px-4 px-lg-5 mt-5">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">購入明細ID</th>
+              <th scope="col">商品名</th>
+              <th scope="col">数量</th>
+              <th scope="col">小計</th>
+              <th scope="col">詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @order_details%>
+              <% @order_details.each do |order_detail| %>
+                <tr>
+                  <th scope="row"><%= order_detail.id %></th>
+                  <td><%= order_detail.product_name %></td>
+                  <td><%= order_detail.quantity %></td>
+                  <td><%= "¥#{order_detail.product_price}" %></td>
+                  <td><%= link_to '詳細', order_detail_path(id: order_detail.id), class: 'btn btn-primary' %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </body>
+</html>
