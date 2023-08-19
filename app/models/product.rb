@@ -2,6 +2,8 @@
 
 class Product < ApplicationRecord
   has_one_attached :image
+  has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
 
   validates :name, presence: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -9,7 +11,7 @@ class Product < ApplicationRecord
   validates :image, presence: true
   validate :image_type, if: :image_was_attached?
 
-  has_many :cart_items, dependent: :destroy
+  enum :status, { active: 0, deleted: 1 }
 
   private
 

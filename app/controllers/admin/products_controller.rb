@@ -6,7 +6,7 @@ module Admin
     before_action :set_product, only: %i[edit update destroy]
 
     def index
-      @products = Product.page(params[:page])
+      @products = Product.active.page(params[:page])
     end
 
     def new
@@ -26,7 +26,13 @@ module Admin
     def edit; end
 
     def update
-      if @product.update(product_params)
+      product = Product.new(product_params)
+
+      Rails.logger.debug @product.image.download
+      product.image.attach(@product.image.blob) unless product.image.attached?
+
+      if product.save
+        @product.deleted!
         flash[:notice] = '更新しました'
         redirect_to admin_products_path
       else
@@ -35,7 +41,7 @@ module Admin
     end
 
     def destroy
-      @product.delete
+      @product.deleted!
 
       flash[:notice] = '削除しました'
       redirect_to admin_products_path
@@ -49,12 +55,6 @@ module Admin
 
     def product_params
       params.require(:product).permit(:name, :price, :description, :image)
-    end
-
-    def basic_auth
-      authenticate_or_request_with_http_basic do |user_name, password|
-        user_name == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
-      end
     end
   end
 end

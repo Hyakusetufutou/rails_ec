@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_03_105733) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_11_035725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,12 +57,43 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_105733) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.integer "price", null: false
+    t.integer "quantity", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["product_id"], name: "index_order_details_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "address", null: false
+    t.string "address2"
+    t.string "country", null: false
+    t.string "state", null: false
+    t.string "zip", null: false
+    t.string "cc_name", null: false
+    t.string "cc_number", null: false
+    t.string "cc_expiration", null: false
+    t.string "cc_cvv", null: false
+    t.integer "billing_amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -77,4 +108,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_105733) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "products"
 end
