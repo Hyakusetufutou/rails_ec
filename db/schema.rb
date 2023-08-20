@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_002759) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_120216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,8 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_002759) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "promotion_code_id"
-    t.index ["promotion_code_id"], name: "index_carts_on_promotion_code_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -87,8 +85,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_002759) do
     t.integer "billing_amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "promotion_code_id"
-    t.index ["promotion_code_id"], name: "index_orders_on_promotion_code_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -103,10 +99,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_002759) do
   create_table "promotion_codes", force: :cascade do |t|
     t.string "code", null: false
     t.integer "reduced_rate", null: false
-    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "orders_id"
+    t.bigint "carts_id"
+    t.index ["carts_id"], name: "index_promotion_codes_on_carts_id"
     t.index ["code"], name: "unique_promotion_code", unique: true
+    t.index ["orders_id"], name: "index_promotion_codes_on_orders_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -121,8 +120,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_002759) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
-  add_foreign_key "carts", "promotion_codes"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
-  add_foreign_key "orders", "promotion_codes"
+  add_foreign_key "promotion_codes", "carts", column: "carts_id"
+  add_foreign_key "promotion_codes", "orders", column: "orders_id"
 end
