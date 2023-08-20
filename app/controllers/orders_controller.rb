@@ -17,8 +17,8 @@ class OrdersController < ApplicationController
   def create
     @order = order_new
 
-    if current_cart.cart_items.empty? | !@order.save || !@order.register_order_details(current_cart.cart_items)
-      render :index, status: :unprocessable_entity
+    if current_cart.cart_items.empty? || !@order.save || !@order.register_order_details(current_cart.cart_items)
+      render :new, status: :unprocessable_entity
       return
     end
 
@@ -40,9 +40,9 @@ class OrdersController < ApplicationController
   def order_new
     order = Order.new(order_params)
     order.billing_amount = current_cart.billing_amount
-    if carrent_cart.promotion_code_id
+    if current_cart.promotion_code_id
       order.promotion_code_id = current_cart.promotion_code_id
-      PromotionCode.find(id: order.promotion_code_id).used!
+      PromotionCode.find(order.promotion_code_id).used!
     end
     order
   end

@@ -152,6 +152,10 @@
                     <span class="text-body-secondary"><%= "¥#{cart_item.total_price}" %></span>
                   </li>
                 <% end %>
+                <% if @cart.promotion_code_id %>
+                  <%= "割引額：¥#{@cart.total_price - @cart.billing_amount}" %>
+                <% end %>
+                <%= "合計金額：¥#{@cart.billing_amount}" %>
               <% else %>
                 <%= 'アイテムはありません' %>
               <% end %>

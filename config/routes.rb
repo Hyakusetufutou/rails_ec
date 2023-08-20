@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :cart_items, only: %i[create update destroy]
   resources :orders, only: %i[index new create]
   resources :order_details, only: %i[index show]
+  resources :promotion_codes, only: %i[index]
   root 'products#index'
 end

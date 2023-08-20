@@ -2,7 +2,7 @@
 
 class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
-  belongs_to :promotion_code
+  belongs_to :promotion_code, optional: true
 
   validates :email, { presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/ } }
   validates :zip, { presence: true, format: { with: /\A\d{7}\z/ } }

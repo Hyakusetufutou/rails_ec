@@ -1,16 +1,14 @@
 
 class CartsController < ApplicationController
   def update
-    pp 'a'
     cart = Cart.find(params[:id])
     promotion_code = PromotionCode.find_by(code: promotion_code_params[:promotion_code])
 
-    pp 'b'
-    if promotion_code&.unused? && cart.more_than_reduced_rate?(promotion_code.reduced_rate)
-      cart.promotion_code = promotion_code.id
+    if promotion_code&.unused? && cart.more_than_reduced_rate?(promotion_code.reduced_rate) && !cart.promotion_code_id
+      cart.promotion_code_id = promotion_code.id
+      cart.save
       flash[:notice] = 'プロモーションコードを適用しました'
     else 
-      pp 'failed'
       flash[:alert] = 'プロモーションコードの適用に失敗しました'
     end
 
