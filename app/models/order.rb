@@ -23,4 +23,10 @@ class Order < ApplicationRecord
   def fullname
     firstname + lastname
   end
+
+  def total_price
+    price = 0
+    order_details.each { |order_detail| price += order_detail.price } if order_details.present?
+    price
+  end
 end

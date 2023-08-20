@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_action :basic_auth, only: %i[index]
 
   def index
-    @orders = Order.page(params[:page]).order(:id)
+    @orders = Order.page(params[:page]).per(10).order(:id)
   end
 
   def new
@@ -49,5 +49,8 @@ class OrdersController < ApplicationController
 
   def current_cart_items
     @cart_items = CartItem.where(cart_id: session[:cart_id]).order(:id)
+    if !@cart_items
+      current_cart.update(promotion_code_id: nil) 
+    end
   end
 end

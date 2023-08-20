@@ -25,6 +25,7 @@
               <th scope="col">注文ID</th>
               <th scope="col">注文者</th>
               <th scope="col">注文日</th>
+              <th scope="col">割引額</th>
               <th scope="col">合計金額</th>
               <th scope="col">詳細</th>
             </tr>
@@ -36,6 +37,7 @@
                   <th scope="row"><%= order.id %></th>
                   <td><%= order.fullname %></td>
                   <td><%= l order.created_at, format: :only_date %></td>
+                  <td><%= "¥#{order.total_price - order.billing_amount}" %></td>
                   <td><%= "¥#{order.billing_amount}" %></td>
                   <td><%= link_to '詳細', order_details_path(id: order.id), class: 'btn btn-primary' %></td>
                 </tr>

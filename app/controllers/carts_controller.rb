@@ -4,7 +4,7 @@ class CartsController < ApplicationController
     cart = Cart.find(params[:id])
     promotion_code = PromotionCode.find_by(code: promotion_code_params[:promotion_code])
 
-    if promotion_code&.unused? && cart.more_than_reduced_rate?(promotion_code.reduced_rate) && !cart.promotion_code_id
+    if promotion_code&.unused? && cart.more_than_reduced_rate?(promotion_code.reduced_rate)
       cart.promotion_code_id = promotion_code.id
       cart.save
       flash[:notice] = 'プロモーションコードを適用しました'
@@ -18,7 +18,6 @@ class CartsController < ApplicationController
   private
 
   def promotion_code_params
-    p 'c'
     params.require(:cart).permit(:promotion_code)
   end
 end

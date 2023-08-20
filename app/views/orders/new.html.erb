@@ -153,9 +153,13 @@
                   </li>
                 <% end %>
                 <% if @cart.promotion_code_id %>
-                  <%= "割引額：¥#{@cart.total_price - @cart.billing_amount}" %>
+                  <div class="d-flex justify-content-end">
+                    <%= "割引額：¥#{@cart.total_price - @cart.billing_amount}" %>
+                  </div>
                 <% end %>
-                <%= "合計金額：¥#{@cart.billing_amount}" %>
+                <div class="d-flex justify-content-end">
+                  <%= "合計金額：¥#{@cart.billing_amount}" %>
+                </div>
               <% else %>
                 <%= 'アイテムはありません' %>
               <% end %>
