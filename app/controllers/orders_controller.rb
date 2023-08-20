@@ -49,8 +49,8 @@ class OrdersController < ApplicationController
 
   def current_cart_items
     @cart_items = CartItem.where(cart_id: session[:cart_id]).order(:id)
-    if !@cart_items
-      current_cart.update(promotion_code_id: nil) 
-    end
+    return if @cart_items
+
+    current_cart.update(promotion_code_id: nil)
   end
 end

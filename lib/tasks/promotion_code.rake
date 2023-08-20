@@ -15,14 +15,14 @@ namespace :promotion_code do
 
         promotion_code = PromotionCode.new(code: code, reduced_rate: reduced_rate)
         promotion_code.save!
-      rescue => e
+      rescue StandardError
         # 無限にループすると嫌なので、リトライ回数を100回に制限
         retry_count += 1
         if retry_count <= 100
           retry
         else
           puts 'プロモーションコードの生成に失敗しました'
-          return 
+          return
         end
       end
     end
