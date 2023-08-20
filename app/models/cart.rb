@@ -2,6 +2,7 @@
 
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
+  belongs_to :promotion_code
 
   def add_item(product_id, quantity)
     item = cart_items.find_by(product_id: product_id) || cart_items.build(product_id: product_id)

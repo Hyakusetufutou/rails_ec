@@ -13,8 +13,8 @@ namespace :promotion_code do
         # 端数になるのが嫌なので、10の位で四捨五入する
         reduced_rate = PromotionCodeGenerator.reduced_rate(min: 100, max: 1000).round(-1)
 
-        PromotionCode.new(code: code, reduced_rate: reduced_rate)
-        PromotionCode.save!
+        promotion_code = PromotionCode.new(code: code, reduced_rate: reduced_rate)
+        promotion_code.save!
       rescue => e
         # 無限にループすると嫌なので、リトライ回数を100回に制限
         retry_count += 1
