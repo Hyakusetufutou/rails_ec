@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @promotion_code = PromotionCode.new
+    @cart = current_cart
   end
 
   def create
@@ -37,7 +39,11 @@ class OrdersController < ApplicationController
 
   def order_new
     order = Order.new(order_params)
-    order.billing_amount = current_cart.total_price
+    order.billing_amount = current_cart.billing_amount
+    if carrent_cart.promotion_code_id
+      order.promotion_code_id = current_cart.promotion_code_id
+      PromotionCode.find(id: order.promotion_code_id).used!
+    end
     order
   end
 

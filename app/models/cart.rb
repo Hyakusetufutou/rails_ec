@@ -20,4 +20,17 @@ class Cart < ApplicationRecord
     cart_items.each { |item| price += item.total_price } if cart_items.present?
     price
   end
+
+  def more_than_reduced_rate?(reduced_rate)
+    total_price > reduced_rate
+  end
+
+  def billing_amount
+    reduced_rate = PromotionCode.find(id: promotion_code_id)&.reduced_rate
+    if reduced_rate
+      total_price - reduced_rate
+    else
+      total_price
+    end
+  end
 end

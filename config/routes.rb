@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products, except: %i[show]
   end
+  resources :carts, only: %i[update]
   resources :cart_items, only: %i[create update destroy]
   resources :orders, only: %i[index new create]
   resources :order_details, only: %i[index show]
