@@ -40,17 +40,17 @@ class OrdersController < ApplicationController
   def order_new
     order = Order.new(order_params)
     order.billing_amount = current_cart.billing_amount
-    if current_cart.promotion_code_id
-      order.promotion_code_id = current_cart.promotion_code_id
-      PromotionCode.find(order.promotion_code_id).used!
+    if current_cart.promotion_code
+      order.update(promotion_code: current_cart.promotion_code)
+      current_cart.promotion_code = nil
     end
     order
   end
 
   def current_cart_items
     @cart_items = CartItem.where(cart_id: session[:cart_id]).order(:id)
-    return if @cart_items
+    return if @cart_items.present?
 
-    current_cart.update(promotion_code_id: nil)
+    current_cart.update(promotion_code: nil)
   end
 end

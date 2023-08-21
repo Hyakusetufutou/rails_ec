@@ -152,9 +152,9 @@
                     <span class="text-body-secondary"><%= "¥#{cart_item.total_price}" %></span>
                   </li>
                 <% end %>
-                <% if @cart.promotion_code_id %>
+                <% if @cart.promotion_code %>
                   <div class="d-flex justify-content-end">
-                    <%= "割引額：¥#{@cart.total_price - @cart.billing_amount}" %>
+                    <%= "割引額：¥#{@cart.promotion_code_reduced_rate}" %>
                   </div>
                 <% end %>
                 <div class="d-flex justify-content-end">
@@ -167,7 +167,7 @@
             <%= form_with model: @cart, url: cart_path(@cart.id), data: {turbo_method: :patch}, class: 'card p-2' do |f| %>
               <div class="input-group">
                 <%= f.text_field :promotion_code, placeholder: 'Promo code', value: '', class: 'form-control' %>
-                <% if @cart_items.present? %>
+                <% if @cart.permit_promotion_code? %>
                   <%= f.submit t('index.Redeem'), class: 'btn btn-secondary' %>
                 <% else %>
                   <%= f.submit t('index.Redeem'), class: 'btn btn-secondary', disabled: true %>

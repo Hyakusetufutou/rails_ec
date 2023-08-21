@@ -15,7 +15,7 @@
               <th scope="col">ID</th>
               <th scope="col">プロモーションコード</th>
               <th scope="col">割引額</th>
-              <th scope="col">使用状況</th>
+              <th scope="col">使用した注文ID</th>
             </tr>
           </thead>
           <tbody>
@@ -25,7 +25,7 @@
                   <th scope="row"><%= promotion_code.id %></th>
                   <td><%= promotion_code.code %></td>
                   <td><%= "¥#{promotion_code.reduced_rate}" %></td>
-                  <td><%= promotion_code.status %></td>
+                  <td><%= promotion_code.order_id %></td>
                 </tr>
               <% end %>
             <% end %>

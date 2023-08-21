@@ -101,11 +101,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_120216) do
     t.integer "reduced_rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "orders_id"
-    t.bigint "carts_id"
-    t.index ["carts_id"], name: "index_promotion_codes_on_carts_id"
+    t.bigint "order_id"
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_promotion_codes_on_cart_id"
     t.index ["code"], name: "unique_promotion_code", unique: true
-    t.index ["orders_id"], name: "index_promotion_codes_on_orders_id"
+    t.index ["order_id"], name: "index_promotion_codes_on_order_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -122,6 +122,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_120216) do
   add_foreign_key "cart_items", "products"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
-  add_foreign_key "promotion_codes", "carts", column: "carts_id"
-  add_foreign_key "promotion_codes", "orders", column: "orders_id"
+  add_foreign_key "promotion_codes", "carts"
+  add_foreign_key "promotion_codes", "orders"
 end

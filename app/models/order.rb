@@ -2,7 +2,7 @@
 
 class Order < ApplicationRecord
   has_many :order_details, dependent: :destroy
-  belongs_to :promotion_code, optional: true
+  has_one :promotion_code, dependent: :restrict_with_exception
 
   validates :email, { presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/ } }
   validates :zip, { presence: true, format: { with: /\A\d{7}\z/ } }
@@ -11,6 +11,8 @@ class Order < ApplicationRecord
   validates :cc_expiration, { presence: true, format: { with: %r{\A\d{2}/\d{2}\z} } }
   validates :cc_cvv, { presence: true, format: { with: /\A\d{3,4}\z/ } }
   validates :billing_amount, numericality: { only_integer: true }
+
+  delegate :reduced_rate, to: :promotion_code, prefix: true
 
   def register_order_details(cart_items)
     cart_items.each do |cart_item|

@@ -2,7 +2,9 @@
 
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
-  belongs_to :promotion_code, optional: true
+  has_one :promotion_code, dependent: :restrict_with_exception
+
+  delegate :reduced_rate, to: :promotion_code, prefix: true
 
   def add_item(product_id, quantity)
     item = cart_items.find_by(product_id: product_id) || cart_items.build(product_id: product_id)
@@ -21,16 +23,20 @@ class Cart < ApplicationRecord
     price
   end
 
-  def more_than_reduced_rate?(reduced_rate)
-    total_price > reduced_rate
+  def less_than_reduced_rate?(reduced_rate)
+    total_price < reduced_rate
   end
 
   def billing_amount
-    reduced_rate = PromotionCode.find_by(id: promotion_code_id)&.reduced_rate
+    reduced_rate = promotion_code&.reduced_rate
     if reduced_rate
       total_price - reduced_rate
     else
       total_price
     end
+  end
+
+  def permit_promotion_code?
+    cart_items.present? && !promotion_code
   end
 end
