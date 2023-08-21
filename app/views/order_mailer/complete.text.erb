@@ -15,8 +15,9 @@
     <%= "価格　：#{order_detail.product_price}円" %>
     <%= "個数　：#{order_detail.quantity}個" %>
     <%= "小計　：#{order_detail.price}円" %>
-    <%= "合計金額：#{@order.billing_amount}円" %>
 <% end %>
+<%= "割引額　：#{@order.promotion_code_reduced_rate}円" %>
+<%= "合計金額：#{@order.billing_amount}円" %>
 
 =============================
 お届け先ご住所

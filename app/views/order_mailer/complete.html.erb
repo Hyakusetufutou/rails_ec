@@ -29,7 +29,10 @@
             <%= "小計　：#{order_detail.price}円" %>
           </p>
         <% end %>
-        <p><%= "合計金額：#{@order.billing_amount}円" %></p>
+        <p>
+          <%= "割引額　：#{@order.promotion_code_reduced_rate}円" %><br>
+          <%= "合計金額：#{@order.billing_amount}円" %>
+        </p>
         <p>
           ============================= <br>
           お届け先ご住所 <br>
