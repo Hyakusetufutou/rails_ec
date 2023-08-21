@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-
   def update
     cart = Cart.find(params[:id])
     promotion_code = PromotionCode.find_by(code: promotion_code_params[:promotion_code])
