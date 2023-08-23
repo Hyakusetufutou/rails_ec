@@ -152,16 +152,28 @@
                     <span class="text-body-secondary"><%= "¥#{cart_item.total_price}" %></span>
                   </li>
                 <% end %>
+                <% if @cart.promotion_code %>
+                  <div class="d-flex justify-content-end">
+                    <%= "割引額：¥#{@cart.promotion_code_reduced_rate}" %>
+                  </div>
+                <% end %>
+                <div class="d-flex justify-content-end">
+                  <%= "合計金額：¥#{@cart.billing_amount}" %>
+                </div>
               <% else %>
                 <%= 'アイテムはありません' %>
               <% end %>
             </ul>
-            <form class="card p-2">
+            <%= form_with model: @cart, url: cart_path(@cart.id), data: {turbo_method: :patch}, class: 'card p-2' do |f| %>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Promo code">
-                <button type="submit" class="btn btn-secondary"><%= t 'index.Redeem' %></button>
+                <%= f.text_field :promotion_code, placeholder: 'Promo code', value: '', class: 'form-control' %>
+                <% if @cart.permit_promotion_code? %>
+                  <%= f.submit t('index.Redeem'), class: 'btn btn-secondary' %>
+                <% else %>
+                  <%= f.submit t('index.Redeem'), class: 'btn btn-secondary', disabled: true %>
+                <% end %>
               </div>
-            </form>
+            <% end %>
           </div>
           <div class="col-md-7 col-lg-8">
             <%= form_with model: @order, url: orders_path, class: 'needs-validation' do |f| %>

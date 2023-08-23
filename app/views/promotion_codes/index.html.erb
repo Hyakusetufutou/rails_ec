@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+  </head>
+  <body>
+    <div class='flex flex-wrap justify-center my-5'>
+      <div class="container px-4 px-lg-5 mt-5">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">プロモーションコード</th>
+              <th scope="col">割引額</th>
+              <th scope="col">使用した注文ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @promotion_codes %>
+              <% @promotion_codes.each do |promotion_code| %>
+                <tr>
+                  <th scope="row"><%= promotion_code.id %></th>
+                  <td><%= promotion_code.code %></td>
+                  <td><%= "¥#{promotion_code.reduced_rate}" %></td>
+                  <td><%= promotion_code.order_id %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%= paginate @promotion_codes %>
+  </body>
+</html>
